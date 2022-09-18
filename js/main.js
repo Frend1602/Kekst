@@ -29,6 +29,8 @@ const checkStringLength = (text, maxLength) => {
   return text.length <= maxLength;
 };
 
+checkStringLength('text', 2);
+
 const DESCRIPTIONS = [
   'неплохое фото_1',
   'неплохое фото_2',
@@ -44,6 +46,10 @@ const COMENTS = [
   'Моя бабушка случайно чихнула с фотоаппаратом в руках и у неё получилась фотография лучше.',
   'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.',
   'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!',
+  '',
+  '',
+  '',
+  '',
 ];
 
 const NAMES = [
@@ -54,19 +60,25 @@ const NAMES = [
 ]
 
 const countObj = 25;
-const randomArrayValue = generateArrayRandomNumber(1, countObj);
-const randomArrayKey = generateArrayRandomNumber(0, randomArrayValue.length);
+const randomArrayId = generateArrayRandomNumber(1, countObj);
+const randomArrayUrl = generateArrayRandomNumber(1, countObj);
 
 const createObj = (i) => {
   return {
-    id: randomArrayValue[i],
-    url: 'photos/' + i + '.jpg',
+    id: randomArrayId[i],
+    url: 'photos/' + randomArrayUrl[i] + '.jpg',
     description: DESCRIPTIONS[getRandomNumber(0, DESCRIPTIONS.length)],
     likes: getRandomNumber(15, 200),
     comment: {
       id: '',
       avatar: 'img/avatar-' + getRandomNumber(1, 6) + '.svg',
-      message: COMENTS[getRandomNumber(0, COMENTS.length)],
+      message: COMENTS[getRandomNumber(0, 5)] + ' ' + COMENTS[getRandomNumber(0, COMENTS.length)],
+      name: NAMES[getRandomNumber(0, NAMES.length)],
+    },
+    comment_1: {
+      id: '',
+      avatar: 'img/avatar-' + getRandomNumber(1, 6) + '.svg',
+      message: COMENTS[getRandomNumber(0, 5)] + ' ' + COMENTS[getRandomNumber(0, COMENTS.length)],
       name: NAMES[getRandomNumber(0, NAMES.length)],
     },
   }
