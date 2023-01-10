@@ -1,4 +1,4 @@
-import { ESC_KEYCODE, generateArrayRandomNumber, getRandomNumber } from "./util.js";
+import { generateArrayRandomNumber, getRandomNumber } from "./util.js";
 
 const DESCRIPTIONS = [
   'неплохое фото_1',
@@ -22,6 +22,12 @@ const NAMES = [
   'piter',
   'dasha',
   'max',
+  'Кристина',
+  'Вика',
+  'Игорь',
+  'Виктор',
+  'Катя',
+  'Денис',
 ];
 
 const basePhotos = [];
@@ -47,17 +53,19 @@ const addComments = () => {
 };
 
 
-const createObj = () => {
+const createPic = () => {
   for (let i = 0; i < COUNT_OBJ; i++) {
     basePhotos.push({
       id: randomArrayId[i],
       url: 'photos/' + randomArrayUrl[i] + '.jpg',
       description: DESCRIPTIONS[getRandomNumber(0, DESCRIPTIONS.length)],
       likes: getRandomNumber(likes.min, likes.max),
-      comment: addComments(),
+      comments: addComments(),
     })
   }
 };
 
-export { createObj };
+createPic();
+
+export { basePhotos };
 

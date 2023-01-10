@@ -1,3 +1,3 @@
-import { createObj } from "./data.js";
+import { renderPhotos } from "./prew.js";
 
-createObj();
+renderPhotos();
