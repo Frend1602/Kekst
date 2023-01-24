@@ -1,5 +1,5 @@
-import { basePhotos } from "./data.js";
-import { show } from "./full-photo.js";
+import { basePhotos } from './data.js';
+import { show } from './full-photo.js';
 
 const pictures = document.querySelector('.pictures');
 const pictureTempl = document.querySelector('#picture')
@@ -27,7 +27,5 @@ const renderPhotos = () => {
   });
   pictures.appendChild(basePhotosFragment);
 };
-
-
 
 export { renderPhotos };

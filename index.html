@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="nouislider/nouislider.css">
   <title>Кекстаграм</title>
 </head>
 
@@ -32,12 +33,13 @@
       <section class="img-upload">
         <div class="img-upload__wrapper">
           <h2 class="img-upload__title  visually-hidden">Загрузка фотографии</h2>
-          <form class="img-upload__form" id="upload-select-image" method="post" enctype="multipart/form-data"
-            autocomplete="off">
+          <form class="img-upload__form" id="upload-select-image" method="POST" enctype="multipart/form-data"
+            action="https://23.javascript.pages.academy/kekstagram" autocomplete="off">
 
             <!-- Изначальное состояние поля для загрузки изображения -->
             <fieldset class="img-upload__start">
-              <input type="file" id="upload-file" class="img-upload__input  visually-hidden" name="filename" required>
+              <input type="file" id="upload-file" class="img-upload__input  visually-hidden" name="filename"
+                accept="image/png, image/jpeg" required>
               <label for="upload-file" class="img-upload__label  img-upload__control">Загрузить</label>
             </fieldset>
 
@@ -50,7 +52,7 @@
                   <fieldset class="img-upload__scale  scale">
                     <button type="button" class="scale__control  scale__control--smaller">Уменьшить</button>
                     <input type="text" class="scale__control  scale__control--value" value="55%" title="Image Scale"
-                      name="scale" readonly>
+                      name="scale">
                     <button type="button" class="scale__control  scale__control--bigger">Увеличить</button>
                   </fieldset>
 
@@ -125,8 +127,9 @@
 
                 <!-- Добавление хэш-тегов и комментария к изображению -->
                 <fieldset class="img-upload__text text">
-                  <input class="text__hashtags" name="hashtags" placeholder="#ХэшТег">
-                  <textarea class="text__description" name="description" placeholder="Ваш комментарий..."></textarea>
+                  <input class="text__hashtags" name="hashtags" placeholder="#ХэшТег" maxlength="20">
+                  <textarea class="text__description" name="description" placeholder="Ваш комментарий..."
+                    maxlength="140"></textarea>
                 </fieldset>
 
                 <!-- Кнопка для отправки данных на сервер -->
@@ -246,12 +249,14 @@
   </template>
 
   <!-- Экран загрузки изображения -->
+
   <template id="messages">
     <div class="img-upload__message  img-upload__message--loading">Загружаем...</div>
   </template>
-
+  <script src="nouislider/nouislider.js"></script>
   <script src="js/main.js" type="module"></script>
-  <script src="js/full-photo.js" type="module"></script>
+  <script src="js/upload.js" type="module"></script>
+
 </body>
 
 </html>

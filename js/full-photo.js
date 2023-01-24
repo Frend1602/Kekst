@@ -9,16 +9,13 @@ allpreview.addEventListener('click', () => { bigPicture.classList.remove('hidden
 
 // скрываем лишнее
 
-const commentsCount = bigPicture.querySelector('.social__comment-count');
 const commentsLoader = bigPicture.querySelector('.comments-loader');
-//commentsCount.classList.add('hidden');
 commentsLoader.classList.add('hidden');
 
 const closeModal = () => {
   bigPicture.classList.add('hidden');
   body.classList.remove('modal-open');
   btnCloseModal.removeEventListener('click', closeModal);
-  //commentList.innerHTML = '';
 };
 
 // функция вывода комментариев
@@ -53,7 +50,6 @@ const show = (picture) => {
   body.classList.add('modal-open');
   bigPicture.querySelector('.big-picture__img > img').src = picture.url;
   bigPicture.querySelector('.likes-count').textContent = picture.likes;
-  //bigPicture.querySelector('.comments-count').textContent = picture.comments.length;
   bigPicture.querySelector('.social__caption').textContent = picture.description;
 
   btnCloseModal.addEventListener('click', closeModal);

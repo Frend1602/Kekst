@@ -1,4 +1,4 @@
-import { generateArrayRandomNumber, getRandomNumber } from "./util.js";
+import { generateArrayRandomNumber, getRandomNumber } from './util.js';
 
 const DESCRIPTIONS = [
   'неплохое фото_1',

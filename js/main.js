@@ -1,3 +1,3 @@
-import { renderPhotos } from "./prew.js";
+import { renderPhotos } from './prew.js';
 
 renderPhotos();
