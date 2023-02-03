@@ -135,13 +135,70 @@ const onEffectRadioGroupClick = (evt) => {
 effectRadioGroup.addEventListener('click', onEffectRadioGroupClick)
 
 //Валидация хэштэгов
-
+const comentValue = document.querySelector('.text__description')
 const hashtags = document.querySelector('.text__hashtags');
+hashtags.addEventListener('input',()=>{ 
+  hashtags.setCustomValidity('');
 
-/*hashtags.addEventListener('input', () => {
-  const hashtagsValue = hashtags.value;
-  if () {
-    hashtags.setCustomValidity('');
-  } else { hashtags.setCustomValidity(''); }
-  hashtags.reportValidity();
-});*/
+  let inputText = hashtags.value.toLowerCase().trim();
+
+  if (!inputText) {
+    return;
+  }
+
+  let inputArray = inputText.split(/\s+/);
+
+  if (inputArray.length === 0) {
+    return;
+  }
+
+  const isStartNotHashtag = inputArray.some((item) => {
+    return item[0] !== '#';
+  });
+  if (isStartNotHashtag) {
+    hashtags.setCustomValidity('Хэш-тег начинается с символа # (решётка)');
+
+  }
+
+  const isOnlyLatticeHashtag = inputArray.some((item) => {
+    return item === '#';
+  });
+  if (isOnlyLatticeHashtag) {
+    hashtags.setCustomValidity('Хэш-тег не может состоять только из решетки')
+  }
+
+  const isSplitSpaceHashtag = inputArray.some((item) => {
+    return item.indexOf('#', 1) >= 1;
+  });
+  if (isSplitSpaceHashtag) {
+    hashtags.setCustomValidity('Хэш-теги разделяются пробелами');
+  }
+
+  const isRepeatingHashtag = inputArray.some((item, i, arr) => {
+    return arr.indexOf(item, i + 1) >= i + 1;
+  });
+  if (isRepeatingHashtag) {
+    hashtags.setCustomValidity('Хэш-теги не должны повторяться');
+  }
+
+  const isLongHashtag = inputArray.some((item) => {
+    return item.length > MAX_SYMBOLS;
+  });
+  if (isLongHashtag) {
+    hashtags.setCustomValidity('Максимальная длина хэш-тега 20 символов, включая решетку');
+  }
+
+  if (inputArray.length > MAX_HASHTAGS) {
+    hashtags.setCustomValidity('Максимум 5 хэш-тегов');
+  }
+})
+
+const onEscapeDown = (evt) => {
+  if (evt.key === ('Escape' || 'Esc')) {
+    evt.preventDefault();
+    evt.stopPropagation();
+  }
+}
+
+hashtags.addEventListener('keydown', onEscapeDown)
+comentValue.addEventListener('keydown', onEscapeDown)
